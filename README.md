@@ -7,6 +7,6 @@ Arayüz eklenmiştir.
 ![alt text](https://github.com/melihbasayigit/cizgiFilmInDownloader/blob/master/cizgifilmdownloader.gif?raw=true)
 - [ ] ConsoleWrite Func
 - [ ] Logger
-- [ ] Eş Zamanlı İndirme
+- [X] Eş Zamanlı İndirme
 - [ ] İndirme Listesi Arayüz
 - [ ] Duplicate Önleyici
