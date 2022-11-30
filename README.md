@@ -3,4 +3,4 @@ CizgiFilmIn video indirici
 Cizgifilm.in sitesindeki videoları indirme için geliştirilmiş java kodudur. Video sayfasının linkini yapıştırınca indirilenler klasöründe cizgifilm adlı klasöre mp4 formatında kaydeder.
 Arayüz eklenmiştir.
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/melihbasayigit/cizgiFilmInDownloader/blob/master/cizgifilmdownloader.gif?raw=true)
