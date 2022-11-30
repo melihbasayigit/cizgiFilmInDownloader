@@ -15,7 +15,7 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
         Scene scene = new Scene(root);
-        stage.setTitle("ÇizgiFilmIn Downloader v0.2.0-alpha");
+        stage.setTitle("ÇizgiFilmIn Downloader v0.3.0-alpha");
         stage.setScene(scene);
         stage.show();
     }
