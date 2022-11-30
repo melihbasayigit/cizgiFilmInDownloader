@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -13,6 +14,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 
 public class MainController {
     private Stage stage;
@@ -30,6 +32,8 @@ public class MainController {
 
     @FXML
     private TextField singleDownloadTextField;
+    @FXML
+    private TextArea multiDownloadTextArea;
 
     @FXML
     private Label pathLabel;
@@ -53,18 +57,36 @@ public class MainController {
     @FXML
     protected void downloadButtonClick(ActionEvent event) throws InterruptedException {
         downloadStarted(true);
+        LinkWrapper.setDirectoryPath(new File(pathLabel.getText()));
+        System.out.println(LinkWrapper.getDirectoryPath());
         totalFileSize = 0;
         if(!singleDownloadTextField.getText().isEmpty() && checkLink(singleDownloadTextField.getText())) {
             consoleWrite(singleDownloadTextField.getText());
-            LinkWrapper.setDirectoryPath(new File(pathLabel.getText()));
             LinkWrapper linkWrapper = new LinkWrapper(singleDownloadTextField.getText());
-            System.out.println(LinkWrapper.getDirectoryPath());
             // single download
             totalFileSize += linkWrapper.getFileSize() / 1024;
             SingleDownload download = new SingleDownload(linkWrapper);
             initializeSingleDownload(download);
             download.start();
         }
+        if(!multiDownloadTextArea.getText().isEmpty()) {
+            ArrayList<LinkWrapper> links = new ArrayList<>();
+            String[] splitted = multiDownloadTextArea.getText().split("\n");
+            for(String temp:splitted) {
+                if(checkLink(temp)) {
+                    links.add(new LinkWrapper(temp));
+                }
+            }
+            Downloader downloader = new Downloader(links);
+            downloader.consoleWrite = this::consoleWrite;
+            downloader.updateProgressbar = this::updateProgressbarDirectly;
+            downloader.downloadStarted = this::downloadStarted;
+            downloader.start();
+        } else {
+            if (singleDownloadTextField.getText().isEmpty())
+                downloadStarted(false);
+        }
+
     }
 
     @FXML
@@ -96,6 +118,10 @@ public class MainController {
 
     void updateProgressbar(double completed) {
         progressbar.setProgress(completed / this.totalFileSize);
+    }
+
+    void updateProgressbarDirectly(double ratio) {
+        progressbar.setProgress(ratio);
     }
 
     private void downloadStarted(boolean status) {
