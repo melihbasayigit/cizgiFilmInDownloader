@@ -4,3 +4,9 @@ Cizgifilm.in sitesindeki videoları indirme için geliştirilmiş java kodudur. 
 Arayüz eklenmiştir.
 
 ![alt text](https://github.com/melihbasayigit/cizgiFilmInDownloader/blob/master/cizgifilmdownloader.gif?raw=true)
+
+- [ ] ConsoleWrite Func
+- [ ] Logger
+- [ ] Eş Zamanlı İndirme
+- [ ] İndirme Listesi Arayüz
+- [ ] Duplicate Önleyici
