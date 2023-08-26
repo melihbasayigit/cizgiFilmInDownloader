@@ -10,3 +10,7 @@ Arayüz eklenmiştir.
 - [x] Eş Zamanlı İndirme
 - [ ] İndirme Listesi Arayüz
 - [ ] Duplicate Önleyici
+
+# NOTLAR
+
+Programın çalışabilmesi için FFmpeg codec'in bilgisayarınızda yüklü olması gerekmektedir.
